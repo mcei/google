@@ -1,15 +1,23 @@
-s="https://www.google.com/search?q="
-i=0
+#!/bin/bash
 
-for arg in "$@"
-  do
-    s=$s$arg
-    (( i += 1 ))
-    if [[ $i -lt $# ]]; then
-    	s=$s+
-    fi
-  done
+# This script can be used for googling in terminal
 
-echo $s
+if [ "$#" -lt 1 ]; then
+	echo
+	echo 'Illegal number of arguments'
+	echo 'Usage example: ./google.sh how to exit vim'
+	echo
+	exit 1
+fi
 
-w3m $s
+if [ ! $(which w3m) ]; then
+	echo
+	echo 'w3m text-based web browser not found'
+	echo 'Install with: sudo apt install w3m'
+	echo
+	exit 1
+fi
+
+QUERY=$(echo "$@" | tr ' ' '+')
+
+w3m "https://www.google.com/search?q=${QUERY}"
