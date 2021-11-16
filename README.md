@@ -1,3 +1,5 @@
+### google.sh
+
 This shell script can be used for googling in terminal. It is based on w3m text web browser. This allows to show Google results page in text where most part of answers can be found.
 It takes just a moment comparing to open Chrome on my old laptop...
 
