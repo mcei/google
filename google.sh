@@ -18,6 +18,6 @@ if [ ! $(which w3m) ]; then
 	exit 1
 fi
 
-QUERY=$(echo "$@" | tr ' ' '+')
+QUERY=$(tr ' ' '+' <<<$@)
 
 w3m "https://www.google.com/search?q=${QUERY}"
